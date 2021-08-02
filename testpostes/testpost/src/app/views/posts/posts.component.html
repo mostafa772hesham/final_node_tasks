@@ -1,0 +1,31 @@
+<form #myform="ngForm" (ngSubmit)="addposts(myform.value)">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label"  >Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" ngModel name="email">
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label"  >name </label>
+        <input type="email" class="form-control" id="name" ngModel name="name">
+      </div>
+    
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<table class="table">
+    <thead>
+      <tr>
+        
+        <th scope="col">name</th>
+        <th scope="col">email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let el of posts">
+        <td>{{el.name}}</td>
+        <td>{{el.email}}</td>
+        <td><a routerLink="/editePost/{{el.id}}"><button class="btn btn-primary">update</button></a></td>
+        <td><button class="btn btn-primary" (click) = "delete(el)">delete</button></td>
+      </tr>
+   
+    </tbody>
+  </table>

@@ -1,0 +1,36 @@
+<form class="container my-2 w-25" #contactForm="ngForm" (ngSubmit)="update(contactForm.value);contactForm.reset()">
+    <label class="form-label" for="name">name</label>
+    <input class="form-control my-2" type="text" 
+  name="name"
+   id="name"
+   ngModel
+    #name="ngModel"
+    placeholder="name" 
+    required
+    [(ngModel)]="posts.name"
+    minlength="3"/>
+    <div class="error d-flex justify-content-center" *ngIf="name.touched && name.invalid">
+        <div *ngIf="name.errors?.required">name is required</div>
+        <div *ngIf="name.errors?.minlength">name minlength is {{name.errors?.minlength.requiredLength}}</div>
+
+    </div>
+    <label class="form-label" for="email">email</label>
+
+    <input class="form-control my-2" type="text" 
+  name="email"
+   id="email"
+   #email="ngModel"
+   placeholder="email" 
+   [(ngModel)]="posts.email"
+   ngModel
+   minlength="10"
+   required
+   />
+    <div class="error d-flex justify-content-center" *ngIf="email.touched && email.invalid">
+        <div *ngIf="email.errors?.required">email is required</div>
+        <div *ngIf="email.errors?.minlength">email minlength is {{email.errors?.minlength.requiredLength}}</div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary"[disabled]="contactForm.invalid">Submit</button>
+  </form>
