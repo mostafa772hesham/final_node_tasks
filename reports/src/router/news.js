@@ -37,7 +37,7 @@ router.delete("/deleteNews/:id", auth, async (req, res) => {
 });
 router.patch("/editeNews/:id", auth, async (req, res) => {
   const keyofNewsPostman = Object.keys(req.body);
-  const allowEditeKey = ["title", "description"];
+  const allowEditeKey = ["description"];
   const isvaild = keyofNewsPostman.every((el) => allowEditeKey.includes(el));
   if (!isvaild) return res.send("canot update");
 

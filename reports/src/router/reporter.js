@@ -37,7 +37,7 @@
                 res.send({addreporter,token})
             }
             catch(e){
-                res.send(e)
+                res.send(""+e)
 
             }
         })
@@ -48,28 +48,28 @@
               res.send({reporterlogin,token})
             }
             catch(e){
-                res.send(e)
+                res.send(""+e)
             }
         })
 
-        router.post("/logout",auth, async (req,res)=>{
+        router.delete("/logout",auth, async (req,res)=>{
             try{
                 req.reporter.tokens = req.reporter.tokens.filter((e)=>{
                     return e.token !== req.token
                 })
                await req.reporter.save()
-               res.send("sucsess logout")
+               res.send()
 
             }
             catch(e){
                 res.send("error "+e)
             }
         })
-        router.post("/logoutall",auth,async (req,res)=>{
+        router.delete("/logoutall",auth,async (req,res)=>{
             try{
                 req.reporter.tokens = req.reporter.tokens[""]
                 await req.reporter.save()
-                res.send("sucsess logout all")
+                res.send()
             }
             catch(e){
                 res.send("unable to logout all"+e)

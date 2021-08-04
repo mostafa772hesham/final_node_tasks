@@ -1,0 +1,60 @@
+<form #myform="ngForm"(ngSubmit)="signUp(myform.value)"autocomplete="off" class="w-50 container">
+  <div class="mb-3">
+    <label for="name" class="form-label">Enter your Name </label>
+    <input type="text"
+     class="form-control"
+      id="name"
+      name="name"
+      ngModel
+      required
+      #name="ngModel"/>
+  </div>
+  <div class="error d-flex justify-content-center" *ngIf="name.touched && name.invalid" >
+    <div *ngIf="name.errors?.required">name is required</div>
+  </div>
+  <div class="mb-3">
+    <label for="adress" class="form-label">Enter your Adress </label>
+    <input type="text"
+     class="form-control"
+      id="adress"
+      name="adress"
+      ngModel
+      #adress="ngModel"/>
+  </div>
+  
+  <div class="mb-3">
+    <label for="email" class="form-label"> Enter your Email address</label>
+    <input type="email"
+     class="form-control"
+      id="email"
+      name="email"
+      ngModel
+      #email="ngModel"/>
+  </div>
+  <div class="error d-flex justify-content-center" *ngIf="invaldEmail">invald Email</div>
+  <div class="mb-3">
+    <label for="age" class="form-label">Enter your Age </label>
+    <input type="number"
+     class="form-control"
+      id="age"
+      name="age"
+      ngModel
+      required
+      #age="ngModel"/>
+  </div>
+  <div class="error d-flex justify-content-center" *ngIf="age.touched && age.invalid" >
+    <div *ngIf="age.errors?.required">age is required</div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Enter your Password</label>
+    <input type="password" class="form-control" id="password" name="password" required
+    ngModel
+    #password="ngModel" />
+  </div>
+  <div class="error d-flex justify-content-center" *ngIf="password.touched && password.invalid" >
+    <div *ngIf="password.errors?.required">password is required</div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary"[disabled]="myform.invalid">Submit</button>
+</form>

@@ -1,0 +1,29 @@
+<form #myform="ngForm"(ngSubmit)="login(myform.value)"autocomplete="off" class="w-50 container">
+
+
+  
+  <div class="mb-3">
+    <label for="email" class="form-label"> Enter your Email address</label>
+    <input type="email"
+     class="form-control"
+      id="email"
+      name="email"
+      ngModel
+      #email="ngModel"/>
+  </div>
+  <div *ngIf="invalidlogin">invald Email</div>
+ 
+  
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Enter your Password</label>
+    <input type="password" class="form-control" id="password" name="password" required
+    ngModel
+    #password="ngModel" />
+  </div>
+  <div class="error d-flex justify-content-center" *ngIf="password.touched && password.invalid" >
+    <div *ngIf="password.errors?.required">password is required</div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary"[disabled]="myform.invalid">Submit</button>
+</form>

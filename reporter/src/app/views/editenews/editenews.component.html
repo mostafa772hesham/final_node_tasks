@@ -1,0 +1,28 @@
+
+<form #myform="ngForm"(ngSubmit)="update(myform.value)"autocomplete="off" class="w-50 container">
+
+
+  
+    <div class="mb-3">
+        <label for="title" class="form-label">Enter your title</label>
+        <input type="text" class="form-control" id="title" name="title" 
+        ngModel
+        disabled
+      [(ngModel)]="news.title"
+        #title="ngModel" />
+      </div>
+  
+    <div class="mb-3">
+      <label for="description" class="form-label">Enter your description</label>
+      <input type="text" class="form-control" id="description" name="description" required
+      ngModel
+      [(ngModel)]="news.description"
+      #description="ngModel" />
+    </div>
+    <div class="error d-flex justify-content-center" *ngIf="description.touched && description.invalid" >
+      <div *ngIf="invalid">description is required</div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  

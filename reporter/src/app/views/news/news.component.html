@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">title</th>
+      <th scope="col">description</th>
+      <th scope="col">delete</th>
+      <th scope="col">update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let el of news">
+      <th scope="row">{{ el.title }}</th>
+      <td>{{ el.description }}</td>
+      <td>
+      <a>
+        <button
+          type="button"
+          class="btn btn-primary text-white"
+          (click)="deletNews(el)"
+        >
+          delete
+        </button></a
+      >
+    </td>
+    <td>
+      <a routerLink="/update/{{ el._id }}"
+        ><button class="btn btn-primary">Update</button></a
+      >
+    </td>
+    </tr>
+  </tbody>
+</table>
